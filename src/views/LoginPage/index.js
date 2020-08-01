@@ -124,7 +124,7 @@ function LoginPage(props) {
         className={classes.grid}
       >
         <Grid item className={classes.gridItem}>
-          <img src={LogoImgThree} />
+          <img src={LogoImgThree} alt="Logo" />
         </Grid>
         <Grid item className={classes.gridItem} xs={10} lg={5}>
           {/* <img src={LogoImg} /> 
