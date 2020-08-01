@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Footer from '../assets/jss/components/Footer/Footer.js' // ⛳
 ////import Parallax from "../../components/Parallax/Parallax.js";
 // CSS components
-import teacherPageStyles from '../assets/css/_views/studentPageStyle.js'
+import studentPageStyles from '../assets/css/_views/studentPageStyle.js'
 // Sections for this page
 /////import SearchSection from "./Sections/SearchSection.js";
 /////import CardSection from "./Sections/CardSection.js"
@@ -25,9 +25,7 @@ function studentPage(props) {
     <div>
       <Header />
       <div className={classNames(classes.main, classes.mainRaised)}>
-        <div className={classes.container}>
-          {/* <SearchSection /> */}
-        </div>
+        <div className={classes.container}>{/* <SearchSection /> */}</div>
       </div>
       <Footer />
     </div>

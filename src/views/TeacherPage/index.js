@@ -25,9 +25,7 @@ function teacherPage(props) {
     <div>
       <Header />
       <div className={classNames(classes.main, classes.mainRaised)}>
-        <div className={classes.container}>
-          {/* <SearchSection /> */}
-        </div>
+        <div className={classes.container}>{/* <SearchSection /> */}</div>
       </div>
       <Footer />
     </div>
