@@ -29,7 +29,7 @@ import { Router, Route, Switch } from 'react-router-dom'
 ////import ViewCustomerSection from './Sections/ViewCustomerSection.js'
 // pages for this product
 import LoginPage from './views/LoginPage'
-import SinupPage from './views/SinupPage'
+import SignupPage from './views/SignupPage'
 import StudentPage from './views/StudentPage'
 import TeacherPage from './views/TeacherPage'
 // Redux
@@ -71,7 +71,7 @@ function MainPage(params) {
               <Route path="/login" component={LoginSection} />
               <Route path="/dashboard/:id" component={ViewCustomerSection} />
               <Route path="/dashboard" component={DashboardSection} />*/}
-          <Route path="/signup" component={SinupPage} />
+          <Route path="/signup" component={SignupPage} />
           <Route path="/student" component={StudentPage} />
           <Route path="/teacher" component={TeacherPage} />
           <Route path="/" component={LoginPage} />

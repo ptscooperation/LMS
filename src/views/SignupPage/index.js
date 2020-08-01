@@ -67,7 +67,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function SinupPage(props) {
+function SignupPage(props) {
   const classes = useStyles()
 
   const [form, setValue] = useState({
@@ -222,4 +222,4 @@ function SinupPage(props) {
   )
 }
 
-export default SinupPage
+export default SignupPage

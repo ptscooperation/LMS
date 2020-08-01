@@ -13,8 +13,8 @@ import Alert from '@material-ui/lab/Alert'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 // core components
 // Images
-import LogoImg from '../assets/img/300Logo.png'
-import LogoImgTwo from '../assets/img/juventus-logo.gif'
+////import LogoImg from '../assets/img/300Logo.png'
+////import LogoImgTwo from '../assets/img/juventus-logo.gif'
 import LogoImgThree from '../assets/img/logo-2.png'
 
 const useStyles = makeStyles(theme => ({
