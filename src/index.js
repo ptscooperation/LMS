@@ -90,3 +90,9 @@ ReactDOM.render(
   // </Provider>
   document.getElementById('root'),
 )
+
+//Kusal Dunlajana
+//kusal_123
+//kusal_123##
+
+//The operation failed with an error. (#200) If posting to a group, requires app being installed in the group, and \ either publish_to_groups permission with user token, or both pages_read_engagement \ and pages_manage_posts permission with page token; If posting to a page, \ requires both pages_read_engagement and pages_manage_posts as an admin with \ sufficient administrative permission (200, OAuthException)

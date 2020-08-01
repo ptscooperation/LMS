@@ -6,9 +6,16 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import Alert from '@material-ui/lab/Alert'
+////import Card from '@material-ui/core/Card'
+////import CardActionArea from '@material-ui/core/CardActionArea'
+////import CardMedia from '@material-ui/core/CardMedia'
 // @material-ui/icons
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 // core components
+// Images
+import LogoImg from '../assets/img/300Logo.png'
+import LogoImgTwo from '../assets/img/juventus-logo.gif'
+import LogoImgThree from '../assets/img/logo-2.png'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -40,6 +47,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       marginLeft: '13.5px',
     },
+  },
+  media: {
+    height: 140,
   },
 }))
 
@@ -90,13 +100,27 @@ function LoginPage(props) {
       <Grid
         container
         spacing={3}
-        direction="row"
-        justify="flex-start"
+        direction="column"
+        justify="center"
         alignItems="center"
       >
-        <Grid item className={classes.gridItem} xs={10} lg={12}>
+        <Grid item className={classes.gridItem}>
+          <img src={LogoImgThree} />
+        </Grid>
+        <Grid item className={classes.gridItem} xs={10} lg={5}>
+          {/* <img src={LogoImg} /> 
+          <Card className={classes.root}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image={LogoImg}
+                title="Contemplative Reptile"
+              />
+            </CardActionArea>
+          </Card>*/}
+
           <TextField
-            className={classes.textField}
+            //className={classes.textField}
             id="outlined-basic"
             name="username"
             label="Username"
@@ -107,7 +131,7 @@ function LoginPage(props) {
             required
           />
           <TextField
-            className={classes.textField}
+            //className={classes.textField}
             id="outlined-basic"
             name="password"
             label="Password"
