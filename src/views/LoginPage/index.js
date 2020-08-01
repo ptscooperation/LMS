@@ -34,18 +34,19 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     alignItems: 'center',
     justifyContent: 'center',
-    float: 'right!important',
+    float: 'center!important',
+    minWidth: '300px',
     [theme.breakpoints.down('md')]: {
-      paddingRight: '16px',
-      marginRight: '85px',
+      //paddingRight: '16px',
+      //marginRight: '85px',
     },
   },
   gridItem: {
     [theme.breakpoints.down('md')]: {
-      marginLeft: '20px',
+      //marginLeft: '20px',
     },
     [theme.breakpoints.down('sm')]: {
-      marginLeft: '13.5px',
+      //marginLeft: '13.5px',
     },
   },
   media: {
@@ -93,6 +94,13 @@ function LoginPage(props) {
         })
       },
     )
+  }
+
+  const onSinup = e => {
+    e.preventDefault()
+
+    props.history.push('/signup')
+    window.location.reload()
   }
 
   return (
@@ -150,8 +158,22 @@ function LoginPage(props) {
             className={classes.button}
             startIcon={<ExitToAppIcon />}
             onClick={onSubmit}
+            size="large"
+            //fullWidth={true}
           >
             Login
+          </Button>
+          <br />
+          <Button
+            variant="contained"
+            color="default"
+            className={classes.button}
+            startIcon={<ExitToAppIcon />}
+            onClick={onSinup}
+            size="large"
+            //fullWidth={true}
+          >
+            Sinup
           </Button>
         </Grid>
         <Alert severity={`${form.alert}`}>{form.message}</Alert>
