@@ -87,6 +87,6 @@ function MainPage(params) {
 ReactDOM.render(
   // <Provider store={store}>
   <MainPage />,
-  //  </Provider> 
+  //  </Provider>
   document.getElementById('root'),
 )
