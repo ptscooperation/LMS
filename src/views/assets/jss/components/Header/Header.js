@@ -29,20 +29,21 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Link href="/" color="inherit">
             <Typography variant="h6" className={classes.title}>
               Kallathoni
             </Typography>
           </Link>
-          {/* <Button color="inherit">Login</Button> */}
+          {/* <div className={classes.root} />
+          <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>
     </div>
