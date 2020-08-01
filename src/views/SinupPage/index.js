@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     [theme.breakpoints.up('lg')]: {
-      width: '97ch',
+      //width: '97ch',
     },
     //width: "97ch",
   },
@@ -28,18 +28,41 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     alignItems: 'center',
     justifyContent: 'center',
-    float: 'right!important',
+    float: 'center!important',
     [theme.breakpoints.down('md')]: {
-      paddingRight: '16px',
-      marginRight: '85px',
+      //paddingRight: '16px',
+      //marginRight: '85px',
+    },
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: '30%',
+      minWidth: '300px',
+    },
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: '25.0%',
+      //minWidth: '18%',
     },
   },
   gridItem: {
     [theme.breakpoints.down('md')]: {
-      marginLeft: '20px',
+      //marginLeft: '20px',
+    },
+    [theme.breakpoints.up('sm')]: {
+      //marginLeft: '13.5px',
+    },
+  },
+  grid: {
+    [theme.breakpoints.up('sm')]: {
+      marginTop: '4%',
+      marginLeft: '7.27%',
+      //margin: theme.spacing(3),
+      //margin: theme.spacing(2),
     },
     [theme.breakpoints.down('sm')]: {
-      marginLeft: '13.5px',
+      marginTop: '40px',
+      paddingLeft: '40px',
+      //marginLeft: '20px',
+      //marginRight: '0%',
+      //margin: theme.spacing(2),
     },
   },
 }))
@@ -97,11 +120,12 @@ function SinupPage(props) {
       <Grid
         container
         spacing={3}
-        direction="row"
+        direction="column"
         justify="flex-start"
-        alignItems="center"
+        alignItems="stretch"
+        className={classes.grid}
       >
-        <Grid item className={classes.gridItem} xs={10} lg={12}>
+        <Grid item className={classes.gridItem} xs={10} lg={10}>
           <ValidatorForm
             //onSubmit={this.handleSubmit}
             onSubmit={updateField}
@@ -187,8 +211,9 @@ function SinupPage(props) {
             className={classes.button}
             startIcon={<ExitToAppIcon />}
             onClick={onSubmit}
+            size="large"
           >
-            Login
+            Sinup
           </Button>
         </Grid>
         <Alert severity={`${form.alert}`}>{form.message}</Alert>

@@ -40,6 +40,10 @@ const useStyles = makeStyles(theme => ({
       //paddingRight: '16px',
       //marginRight: '85px',
     },
+    [theme.breakpoints.down('sm')]: {
+      //marginLeft: '13.5px',
+      minWidth: '280px',
+    },
   },
   gridItem: {
     [theme.breakpoints.down('md')]: {
@@ -47,6 +51,12 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down('sm')]: {
       //marginLeft: '13.5px',
+    },
+  },
+  grid: {
+    [theme.breakpoints.up('sm')]: {
+      marginTop: '7%',
+      //margin: theme.spacing(2),
     },
   },
   media: {
@@ -111,6 +121,7 @@ function LoginPage(props) {
         direction="column"
         justify="center"
         alignItems="center"
+        className={classes.grid}
       >
         <Grid item className={classes.gridItem}>
           <img src={LogoImgThree} />
