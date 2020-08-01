@@ -18,7 +18,7 @@ import Header from './header.section'
 
 const useStyles = makeStyles(studentPageStyles)
 
-function studentPage(props) {
+function StudentPage(props) {
   const classes = useStyles()
 
   return (
@@ -32,4 +32,4 @@ function studentPage(props) {
   )
 }
 
-export default studentPage
+export default StudentPage

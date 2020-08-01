@@ -28,8 +28,10 @@ import { Router, Route, Switch } from 'react-router-dom'
 ////import DashboardSection from './Sections/DashboardSection.js'
 ////import ViewCustomerSection from './Sections/ViewCustomerSection.js'
 // pages for this product
-////import MainPage from "./views/MainPage/MainPage.js";
-////import AddPartPage from "./views/AddPartPage/AddPartPage.js"
+import LoginPage from './views/LoginPage'
+import SinupPage from './views/SinupPage'
+import StudentPage from './views/StudentPage'
+import TeacherPage from './views/TeacherPage'
 // Redux
 ////import { Provider } from 'react-redux'
 ////import { createStore, applyMiddleware, compose } from 'redux'
@@ -68,11 +70,11 @@ function MainPage(params) {
           {/* <Route path="/signup" component={SignupSection} />
               <Route path="/login" component={LoginSection} />
               <Route path="/dashboard/:id" component={ViewCustomerSection} />
-              <Route path="/dashboard" component={DashboardSection} />
-              <Route path="/pickpart/:partnumber" component={PickItSection} />
-              <Route path="/part/:id" component={ShowPartSection} />
-              <Route path="/add-part" component={AddPartSection} />
-              <Route path="/" component={SearchSection} /> */}
+              <Route path="/dashboard" component={DashboardSection} />*/}
+          <Route path="/signup" component={SinupPage} />
+          <Route path="/student" component={StudentPage} />
+          <Route path="/teacher" component={TeacherPage} />
+          <Route path="/" component={LoginPage} />
         </Switch>
       </Router>
       {/* </div>
@@ -85,8 +87,6 @@ function MainPage(params) {
 ReactDOM.render(
   // <Provider store={store}>
   <MainPage />,
-  {
-    /* </Provider> */
-  },
+  //  </Provider> 
   document.getElementById('root'),
 )
