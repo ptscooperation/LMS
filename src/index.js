@@ -27,6 +27,9 @@ import { Router, Route, Switch } from 'react-router-dom'
 ////import PickItSection from './Sections/PickItSection.js'
 ////import DashboardSection from './Sections/DashboardSection.js'
 ////import ViewCustomerSection from './Sections/ViewCustomerSection.js'
+// pages for this product
+////import MainPage from "./views/MainPage/MainPage.js";
+////import AddPartPage from "./views/AddPartPage/AddPartPage.js"
 // Redux
 ////import { Provider } from 'react-redux'
 ////import { createStore, applyMiddleware, compose } from 'redux'
