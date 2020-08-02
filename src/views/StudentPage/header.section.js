@@ -95,7 +95,7 @@ export default function PersistentDrawerRight() {
   }
 
   return (
-    <div className={classes.root}>
+    <div className={classes.rootX}>
       <CssBaseline />
       <AppBar
         position="static"
@@ -107,29 +107,29 @@ export default function PersistentDrawerRight() {
           <Typography variant="h6" noWrap className={classes.title}>
             Kallathoni
           </Typography>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="end"
-            onClick={handleDrawerOpen}
-            className={clsx(open && classes.hide)}
-          >
-            <Hidden mdUp implementation="js">
+          <Hidden mdUp implementation="js">
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="end"
+              onClick={handleDrawerOpen}
+              className={clsx(open && classes.hide)}
+            >
               <MenuIcon />
-            </Hidden>
-            <Hidden smDown implementation="css">
-              <IconButton aria-label="show 4 new mails" color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <MailIcon />
-                </Badge>
-              </IconButton>
-              <IconButton aria-label="show 17 new notifications" color="inherit">
-                <Badge badgeContent={17} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-            </Hidden>
-          </IconButton>
+            </IconButton>
+          </Hidden>
+          <Hidden smDown implementation="css">
+            <IconButton aria-label="show 4 new mails" color="inherit">
+              <Badge badgeContent={4} color="secondary">
+                <MailIcon />
+              </Badge>
+            </IconButton>
+            <IconButton aria-label="show 17 new notifications" color="inherit">
+              <Badge badgeContent={17} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+          </Hidden>
         </Toolbar>
       </AppBar>
       <Drawer
