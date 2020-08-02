@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import Switch from '@material-ui/core/Switch'
 import Typography from '@material-ui/core/Typography'
+import Hidden from '@material-ui/core/Hidden'
 ////import Card from '@material-ui/core/Card'
 ////import CardActionArea from '@material-ui/core/CardActionArea'
 ////import CardMedia from '@material-ui/core/CardMedia'
@@ -17,7 +18,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 // Images
 ////import LogoImg from '../assets/img/300Logo.png'
 ////import LogoImgTwo from '../assets/img/juventus-logo.gif'
-//import LogoImgThree from '../assets/img/logo-2.png'
+import LogoImgThree from '../assets/img/logo-2.png'
 import LogoImgFour from '../assets/img/logo-javascript.png'
 
 const useStyles = makeStyles(theme => ({
@@ -159,7 +160,12 @@ function LoginPage(props) {
         className={classes.grid}
       >
         <Grid item className={classes.gridItem}>
-          <img src={LogoImgFour} alt="Logo" />
+          <Hidden smDown implementation="css">
+            <img src={LogoImgThree} alt="Logo" />
+          </Hidden>
+          <Hidden smUp implementation="css">
+            <img src={LogoImgFour} alt="Logo" />
+          </Hidden>
         </Grid>
         <Grid
           container
