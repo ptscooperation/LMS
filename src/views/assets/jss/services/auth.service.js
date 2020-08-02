@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 //const API_URL = 'https://anjinz-api.vercel.app/'
-const API_URL = "http://localhost:8082/";
+const API_URL = 'http://localhost:8082/'
 
 class AuthService {
   loginStudent(email, password) {
