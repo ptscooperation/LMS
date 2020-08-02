@@ -24,8 +24,11 @@ function TeacherPage(props) {
   return (
     <div>
       <Header />
-      <div className={classNames(classes.main, classes.mainRaised)}>
-        <div className={classes.container}>{/* <SearchSection /> */}</div>
+      <div className={classNames(classes.mainX, classes.mainRaisedX)}>
+        <div className={classes.containerX}>
+          <h1>Hello..!!! Teacher {props.match.params.id} 🉐</h1>
+          {/* <SearchSection /> */}
+        </div>
       </div>
       <Footer />
     </div>
