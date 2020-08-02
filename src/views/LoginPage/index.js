@@ -97,10 +97,10 @@ function LoginPage(props) {
       response => {
         setValue({ message: response.data.message, alert: 'success' })
         if (checked) {
-          props.history.push('/teacher/:id')
+          props.history.push(`/teacher/${response.data.student_uid}`)
           window.location.reload()
         } else {
-          props.history.push('/student/:id')
+          props.history.push(`/student/${response.data.student_uid}`)
           window.location.reload()
         }
       },
