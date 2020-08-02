@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 // @material-ui/core components
 import AuthService from '../assets/jss/services/auth.service'
 import { makeStyles } from '@material-ui/core/styles'
+import Alert from '@material-ui/lab/Alert'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
-import Alert from '@material-ui/lab/Alert'
+import Switch from '@material-ui/core/Switch'
+import Typography from '@material-ui/core/Typography'
 ////import Card from '@material-ui/core/Card'
 ////import CardActionArea from '@material-ui/core/CardActionArea'
 ////import CardMedia from '@material-ui/core/CardMedia'
@@ -74,6 +76,11 @@ function LoginPage(props) {
     message: '',
   })
 
+  const [checked, setChecked] = useState(false)
+
+  const toggleChecked = () => {
+    setChecked(prev => !prev)
+  }
   const updateField = e => {
     setValue({
       ...form,
@@ -89,8 +96,13 @@ function LoginPage(props) {
     AuthService.login(form.username, form.password).then(
       response => {
         setValue({ message: response.data.message, alert: 'success' })
-        props.history.push('/')
-        window.location.reload()
+        if (checked) {
+          props.history.push('/teacher/:id')
+          window.location.reload()
+        } else {
+          props.history.push('/student/:id')
+          window.location.reload()
+        }
       },
       error => {
         const resMessage =
@@ -109,8 +121,13 @@ function LoginPage(props) {
   const onSinup = e => {
     e.preventDefault()
 
-    props.history.push('/signup')
-    window.location.reload()
+    if (checked) {
+      props.history.push('/signup-teacher')
+      window.location.reload()
+    } else {
+      props.history.push('/signup-student')
+      window.location.reload()
+    }
   }
 
   return (
@@ -125,6 +142,27 @@ function LoginPage(props) {
       >
         <Grid item className={classes.gridItem}>
           <img src={LogoImgThree} alt="Logo" />
+        </Grid>
+        <Grid
+          container
+          spacing={3}
+          direction="row"
+          justify="center"
+          alignItems="center"
+        >
+          <Grid item>
+            <Typography variant="button" display="block" gutterBottom>
+              Student
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Switch size="medium" checked={checked} onChange={toggleChecked} />
+          </Grid>
+          <Grid item>
+            <Typography variant="button" display="block" gutterBottom>
+              Teacher
+            </Typography>
+          </Grid>
         </Grid>
         <Grid item className={classes.gridItem} xs={10} lg={5}>
           {/* <img src={LogoImg} /> 
