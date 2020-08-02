@@ -71,9 +71,12 @@ function SignupPage(props) {
   const classes = useStyles()
 
   const [form, setValue] = useState({
-    username: '',
-    email: '',
-    password: '',
+    teacher_name: '',
+    institute_name: '',
+    teacher_phone_number: '',
+    teacher_email: '',
+    nic: '',
+    teacher_password: '',
     alert: '',
     message: '',
   })
@@ -95,7 +98,14 @@ function SignupPage(props) {
     //this.form.validateAll();
 
     //if (this.checkBtn.context._errors.length === 0) {
-    AuthService.register(form.username, form.email, form.password).then(
+    AuthService.registerTeacher(
+      form.teacher_name,
+      form.institute_name,
+      form.teacher_phone_number,
+      form.nic,
+      form.teacher_email,
+      form.teacher_password,
+    ).then(
       response => {
         setValue({ message: response.data.message, alert: 'success' })
         props.history.push('/')
@@ -142,10 +152,43 @@ function SignupPage(props) {
             <TextField
               //className={classes.textField}
               id="outlined-basic"
-              name="username"
-              label="Username"
+              name="teacher_name"
+              label="Full name"
               variant="filled"
-              value={form.username}
+              value={form.teacher_name}
+              onChange={updateField}
+              fullWidth
+              required
+            />
+            <TextField
+              //className={classes.textField}
+              id="outlined-basic"
+              name="institute_name"
+              label="Institute"
+              variant="filled"
+              value={form.institute_name}
+              onChange={updateField}
+              fullWidth
+              //required
+            />
+            <TextField
+              //className={classes.textField}
+              id="outlined-basic"
+              name="nic"
+              label="NIC"
+              variant="filled"
+              value={form.nic}
+              onChange={updateField}
+              fullWidth
+              required
+            />
+            <TextField
+              //className={classes.textField}
+              id="outlined-basic"
+              name="teacher_phone_number"
+              label="Phone Number"
+              variant="filled"
+              value={form.teacher_phone_number}
               onChange={updateField}
               fullWidth
               required
@@ -154,8 +197,8 @@ function SignupPage(props) {
               label="Email"
               //onChange={this.handleChange}
               onChange={updateField}
-              name="email"
-              value={form.email}
+              name="teacher_email"
+              value={form.teacher_email}
               validators={['required', 'isEmail']}
               errorMessages={['this field is required', 'email is not valid']}
               variant="filled"
@@ -166,11 +209,11 @@ function SignupPage(props) {
               label="Password"
               //onChange={this.handleChange}
               onChange={updateField}
-              name="password"
+              name="teacher_password"
               type="password"
-              value={form.password}
+              value={form.teacher_password}
               validators={[
-                'minNumber:6',
+                'minNumber:8',
                 'maxNumber:255',
                 'matchRegexp:^[0-9]$',
                 'required',

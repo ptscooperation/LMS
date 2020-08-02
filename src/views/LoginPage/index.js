@@ -97,8 +97,8 @@ function LoginPage(props) {
     if (checked) {
       AuthService.loginTeacher(form.username, form.password).then(
         response => {
-          setValue({ message: response.data.message, alert: 'success' })
-          props.history.push(`/teacher/${response.data.student_uid}`)
+          setValue({ message: '', alert: 'success' })
+          props.history.push(`/teacher/${response.user._id}`)
           window.location.reload()
         },
         error => {

@@ -33,12 +33,12 @@ class AuthService {
       .then(response => {
         if (response.data.token) {
           localStorage.setItem('user', JSON.stringify(response.data))
-          console.log('accTok: ', response.data.token)
+          //console.log('accTok: ', response.data.token)
         }
-        console.log('Resp: ', response)
-        console.log('accTok2: ', response.data.accessToken)
-        console.log('accTok3: ', response.data.token)
-        console.log('Login: ' + response.data)
+        //console.log('Resp: ', response)
+        //console.log('accTok2: ', response.data.accessToken)
+        //console.log('accTok3: ', response.data.token)
+        //console.log('Login: ' + response.data)
         return response.data
       })
   }
@@ -67,11 +67,21 @@ class AuthService {
     })
   }
 
-  registerTeacher(name, email, password) {
+  registerTeacher(
+    teacher_name,
+    institute_name,
+    teacher_phone_number,
+    nic,
+    teacher_email,
+    teacher_password,
+  ) {
     return axios.post(API_URL + 'users/signup/teacher', {
-      name,
-      email,
-      password,
+      teacher_name,
+      institute_name,
+      teacher_phone_number,
+      nic,
+      teacher_email,
+      teacher_password,
     })
   }
 

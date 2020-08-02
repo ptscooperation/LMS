@@ -85,6 +85,8 @@ function SignupPage(props) {
     student_phone_number: '',
     student_email: '',
     student_password: '',
+    alert: '',
+    message: '',
   })
 
   const updateField = e => {
@@ -225,7 +227,7 @@ function SignupPage(props) {
               type="password"
               value={form.student_password}
               validators={[
-                'minNumber:6',
+                'minNumber:8',
                 'maxNumber:255',
                 'matchRegexp:^[0-9]$',
                 'required',
