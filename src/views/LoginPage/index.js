@@ -94,29 +94,46 @@ function LoginPage(props) {
 
     setValue({ message: '', alert: '' })
 
-    AuthService.login(form.username, form.password).then(
-      response => {
-        setValue({ message: response.data.message, alert: 'success' })
-        if (checked) {
+    if (checked) {
+      AuthService.loginTeacher(form.username, form.password).then(
+        response => {
+          setValue({ message: response.data.message, alert: 'success' })
           props.history.push(`/teacher/${response.data.student_uid}`)
           window.location.reload()
-        } else {
-          props.history.push(`/student/${response.data.student_uid}`)
-          window.location.reload()
-        }
-      },
-      error => {
-        const resMessage =
-          (error.response && error.response.data && error.response.data.message) ||
-          error.message ||
-          error.toString()
+        },
+        error => {
+          const resMessage =
+            (error.response && error.response.data && error.response.data.message) ||
+            error.message ||
+            error.toString()
 
-        setValue({
-          alert: 'error',
-          message: resMessage,
-        })
-      },
-    )
+          setValue({
+            alert: 'error',
+            message: resMessage,
+          })
+        },
+      )
+    } else {
+      AuthService.loginStudent(form.username, form.password).then(
+        response => {
+          setValue({ message: '', alert: 'success' })
+          //console.log('ID MY:: ', response)
+          props.history.push(`/student/${response.user._id}`)
+          window.location.reload()
+        },
+        error => {
+          const resMessage =
+            (error.response && error.response.data && error.response.data.message) ||
+            error.message ||
+            error.toString()
+
+          setValue({
+            alert: 'error',
+            message: resMessage,
+          })
+        },
+      )
+    }
   }
 
   const onSinup = e => {
@@ -223,7 +240,7 @@ function LoginPage(props) {
             size="large"
             //fullWidth={true}
           >
-            Sinup
+            Signup
           </Button>
         </Grid>
         <Alert severity={`${form.alert}`}>{form.message}</Alert>

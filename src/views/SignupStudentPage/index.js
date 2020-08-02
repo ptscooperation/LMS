@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { customAlphabet } from 'nanoid'
 // @material-ui/core components
 import AuthService from '../assets/jss/services/auth.service'
 import { makeStyles } from '@material-ui/core/styles'
@@ -7,6 +8,8 @@ import Button from '@material-ui/core/Button'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 import Grid from '@material-ui/core/Grid'
 import Alert from '@material-ui/lab/Alert'
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers'
+import DateFnsUtils from '@date-io/date-fns'
 // @material-ui/icons
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 // core components
@@ -70,12 +73,18 @@ const useStyles = makeStyles(theme => ({
 function SignupPage(props) {
   const classes = useStyles()
 
+  const nanoid = customAlphabet('12345ABCDEGHK', 6)
+  const student_uid = nanoid() //=> "4f90d13a42"
+
+  const [selectedDate, handleDateChange] = useState(new Date())
+
   const [form, setValue] = useState({
-    username: '',
-    email: '',
-    password: '',
-    alert: '',
-    message: '',
+    student_name: '',
+    school: '',
+    //bod: new Date(),
+    student_phone_number: '',
+    student_email: '',
+    student_password: '',
   })
 
   const updateField = e => {
@@ -95,7 +104,16 @@ function SignupPage(props) {
     //this.form.validateAll();
 
     //if (this.checkBtn.context._errors.length === 0) {
-    AuthService.register(form.username, form.email, form.password).then(
+    AuthService.registerStudent(
+      form.student_name,
+      form.school,
+      //form.bod,
+      selectedDate,
+      form.student_phone_number,
+      form.student_email,
+      form.student_password,
+      student_uid,
+    ).then(
       response => {
         setValue({ message: response.data.message, alert: 'success' })
         props.history.push('/')
@@ -141,10 +159,48 @@ function SignupPage(props) {
             <TextField
               //className={classes.textField}
               id="outlined-basic"
-              name="username"
-              label="Username"
+              name="student_name"
+              label="Full Name"
               variant="filled"
-              value={form.username}
+              value={form.student_name}
+              onChange={updateField}
+              fullWidth
+              required
+            />
+            <TextField
+              //className={classes.textField}
+              id="outlined-basic"
+              name="school"
+              label="School"
+              variant="filled"
+              value={form.school}
+              onChange={updateField}
+              fullWidth
+              required
+            />
+            <br />
+            <br />
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <KeyboardDatePicker
+                autoOk
+                variant="inline"
+                inputVariant="outlined"
+                label="Birthday"
+                format="MM/dd/yyyy"
+                value={selectedDate}
+                InputAdornmentProps={{ position: 'start' }}
+                onChange={date => handleDateChange(date)}
+              />
+            </MuiPickersUtilsProvider>
+            <br />
+            <br />
+            <TextField
+              //className={classes.textField}
+              id="outlined-basic"
+              name="student_phone_number"
+              label="Phone Number"
+              variant="filled"
+              value={form.student_phone_number}
               onChange={updateField}
               fullWidth
               required
@@ -153,8 +209,8 @@ function SignupPage(props) {
               label="Email"
               //onChange={this.handleChange}
               onChange={updateField}
-              name="email"
-              value={form.email}
+              name="student_email"
+              value={form.student_email}
               validators={['required', 'isEmail']}
               errorMessages={['this field is required', 'email is not valid']}
               variant="filled"
@@ -165,9 +221,9 @@ function SignupPage(props) {
               label="Password"
               //onChange={this.handleChange}
               onChange={updateField}
-              name="password"
+              name="student_password"
               type="password"
-              value={form.password}
+              value={form.student_password}
               validators={[
                 'minNumber:6',
                 'maxNumber:255',
