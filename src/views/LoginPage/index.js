@@ -17,7 +17,8 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 // Images
 ////import LogoImg from '../assets/img/300Logo.png'
 ////import LogoImgTwo from '../assets/img/juventus-logo.gif'
-import LogoImgThree from '../assets/img/logo-2.png'
+//import LogoImgThree from '../assets/img/logo-2.png'
+import LogoImgFour from '../assets/img/logo-javascript.png'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -141,7 +142,7 @@ function LoginPage(props) {
         className={classes.grid}
       >
         <Grid item className={classes.gridItem}>
-          <img src={LogoImgThree} alt="Logo" />
+          <img src={LogoImgFour} alt="Logo" />
         </Grid>
         <Grid
           container
