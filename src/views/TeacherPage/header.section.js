@@ -13,14 +13,11 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import ListItem from '@material-ui/core/ListItem'
-//import ListItemIcon from "@material-ui/core/ListItemIcon";
-//import ListItemText from "@material-ui/core/ListItemText";
-//import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from '@material-ui/icons/Mail'
-
 import Hidden from '@material-ui/core/Hidden'
-import NotificationsIcon from '@material-ui/icons/Notifications'
-import Badge from '@material-ui/core/Badge'
+import NoteAddIcon from '@material-ui/icons/NoteAdd'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import AssessmentIcon from '@material-ui/icons/Assessment'
+import ReceiptIcon from '@material-ui/icons/Receipt'
 
 const drawerWidth = 82
 
@@ -81,10 +78,13 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function PersistentDrawerRight() {
+export default function PersistentDrawerRight(props) {
   const classes = useStyles()
   const theme = useTheme()
   const [open, setOpen] = React.useState(false)
+
+  const ID = props.id
+  const History = props.history
 
   const handleDrawerOpen = () => {
     setOpen(true)
@@ -104,7 +104,15 @@ export default function PersistentDrawerRight() {
         })}
       >
         <Toolbar>
-          <Typography variant="h6" noWrap className={classes.title}>
+          <Typography
+            variant="h6"
+            onClick={() => {
+              History.push(`/teacher/${ID}`)
+              window.location.reload()
+            }}
+            noWrap
+            className={classes.title}
+          >
             Kallathoni
           </Typography>
           <Hidden mdUp implementation="js">
@@ -119,15 +127,49 @@ export default function PersistentDrawerRight() {
             </IconButton>
           </Hidden>
           <Hidden smDown implementation="css">
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
+            <IconButton
+              color="inherit"
+              aria-label="Bill"
+              title="Bill"
+              onClick={() => {
+                History.push(`/teacher/${ID}/bill/${ID}`)
+                window.location.reload()
+              }}
+            >
+              <ReceiptIcon />
             </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
+            <IconButton
+              color="inherit"
+              aria-label="Analytics"
+              title="Analytics"
+              onClick={() => {
+                History.push(`/teacher/${ID}/analytics/${ID}`)
+                window.location.reload()
+              }}
+            >
+              <AssessmentIcon />
+            </IconButton>
+            <IconButton
+              color="inherit"
+              aria-label="Add a new class"
+              title="Add a new class"
+              onClick={() => {
+                History.push(`/teacher/${ID}/addclass/${ID}`)
+                window.location.reload()
+              }}
+            >
+              <NoteAddIcon />
+            </IconButton>
+            <IconButton
+              color="inherit"
+              aria-label="Profile"
+              title="Profile"
+              onClick={() => {
+                History.push(`/teacher/${ID}/teacherprofile/${ID}`)
+                window.location.reload()
+              }}
+            >
+              <AccountCircleIcon />
             </IconButton>
           </Hidden>
         </Toolbar>
@@ -149,17 +191,55 @@ export default function PersistentDrawerRight() {
         <Divider />
         <List>
           <ListItem button>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
+            <IconButton
+              color="inherit"
+              aria-label="Bill"
+              title="Bill"
+              onClick={() => {
+                History.push(`/teacher/${ID}/bill/${ID}`)
+                window.location.reload()
+              }}
+            >
+              <ReceiptIcon />
             </IconButton>
-          </ListItem>
+          </ListItem>{' '}
           <ListItem button>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              {/* <Badge badgeContent={17} color="secondary"> */}
-              <NotificationsIcon />
-              {/* </Badge> */}
+            <IconButton
+              color="inherit"
+              aria-label="Analytics"
+              title="Analytics"
+              onClick={() => {
+                History.push(`/teacher/${ID}/analytics/${ID}`)
+                window.location.reload()
+              }}
+            >
+              <AssessmentIcon />
+            </IconButton>
+          </ListItem>{' '}
+          <ListItem button>
+            <IconButton
+              color="inherit"
+              aria-label="Add a new class"
+              title="Add a new class"
+              onClick={() => {
+                History.push(`/teacher/${ID}/addclass/${ID}`)
+                window.location.reload()
+              }}
+            >
+              <NoteAddIcon />
+            </IconButton>
+          </ListItem>{' '}
+          <ListItem button>
+            <IconButton
+              color="inherit"
+              aria-label="Profile"
+              title="Profile"
+              onClick={() => {
+                History.push(`/teacher/${ID}/teacherprofile/${ID}`)
+                window.location.reload()
+              }}
+            >
+              <AccountCircleIcon />
             </IconButton>
           </ListItem>
         </List>

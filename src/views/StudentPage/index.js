@@ -23,7 +23,7 @@ function StudentPage(props) {
 
   return (
     <div>
-      <Header />
+      <Header id={props.match.params.id} history={props.history} />
       <div className={classNames(classes.mainX, classes.mainRaisedX)}>
         <div className={classes.containerX}>
           <h1>Hello..!!! Student {props.match.params.id} 🍵</h1>

@@ -204,7 +204,7 @@ function LoginPage(props) {
             //className={classes.textField}
             id="outlined-basic"
             name="username"
-            label="Username"
+            label="Email"
             variant="filled"
             value={form.username}
             onChange={updateField}
