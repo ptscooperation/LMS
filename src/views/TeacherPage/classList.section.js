@@ -54,7 +54,7 @@ export default function ClassListSection(props) {
         })
     }),
   )
-  
+
   if (!List) {
     CardSectionList = 'Classes is not availabe'
   } else {
