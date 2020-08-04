@@ -8,16 +8,14 @@ import { makeStyles } from '@material-ui/core/styles'
 ////import { Typography } from "@material-ui/core";
 ////import Grid from "@material-ui/core/Grid";
 // core components
-//#import Header from '../assets/jss/components/Header/Header.js' // ⛳
+import Header from './header.section' // ⛳
 import Footer from '../assets/jss/components/Footer/Footer.js' // ⛳
 ////import Parallax from "../../components/Parallax/Parallax.js";
 // CSS components
 import teacherPageStyles from '../assets/css/_views/teacherPageStyle.js'
 // Sections for this page
-/////import SearchSection from "./Sections/SearchSection.js";
 import AddClassSection from './addClass.section'
 import ClassListSection from './classList.section'
-import Header from './header.section'
 
 const useStyles = makeStyles(teacherPageStyles)
 var hist = createBrowserHistory()
@@ -32,9 +30,6 @@ function TeacherPage(props) {
         <div className={classes.containerX}>
           <Router history={hist}>
             <Switch>
-              {/* <Route path="/signup-teacher" component={SignupTeacherPage} />
-              <Route path="/signup-student" component={SignupStudentPage} />
-              <Route path="/student/:id" component={StudentPage} />*/}
               <Route path="/teacher/:id/addclass/:id" component={AddClassSection} />
               <Route path="/" component={ClassListSection} />
             </Switch>

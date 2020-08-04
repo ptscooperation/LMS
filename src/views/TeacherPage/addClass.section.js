@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles'
+import authHeader from '../assets/jss/services/auth-header'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
@@ -76,13 +77,15 @@ export default function AddClassSection(props) {
   useEffect(() => {
     function fetchPart(id) {
       axios
-        .get('http://localhost:8082/api/teacher/NI/' + id)
+        .get('http://clz-api.vercel.app/api/teacher/NI/' + id, {
+          headers: authHeader(),
+        })
         .then(res => {
           //console.log('ViewCustomerSection-API-response: ' + res.map())
           setResData(res.data)
         })
         .catch(err => {
-          console.log('Error from ViewCustomerSection')
+          console.log('Error from NI')
         })
     }
     fetchPart(ID)
@@ -109,7 +112,9 @@ export default function AddClassSection(props) {
     }
 
     axios
-      .post('http://localhost:8082/api/teacher/addclass', data)
+      .post('http://clz-api.vercel.app/api/teacher/addclass', data, {
+        headers: authHeader(),
+      })
       .then(res => {
         setValue({
           subject: '',
@@ -124,7 +129,7 @@ export default function AddClassSection(props) {
       .catch(err => {
         setAlertType('error')
         setAlert(err.message)
-        console.log('Error in submission!')
+        console.log('Error in submission@NI!')
       })
   }
 
