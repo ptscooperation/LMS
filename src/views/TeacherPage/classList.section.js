@@ -17,7 +17,10 @@ const useStyles = makeStyles(theme => ({
 export default function ClassListSection(props) {
   const classes = useStyles()
   const [ResData, setResData] = useState([])
-  const [Details, setDetails] = useState([])
+  //const [Details, setDetails] = useState([])
+
+  const ID = props.location.pathname.split('/teacher/')[1]
+
   var CardSectionList
   const List = []
   useEffect(() => {
@@ -34,8 +37,9 @@ export default function ClassListSection(props) {
           console.log('Error from classlist')
         })
     }
-    fetchPart(props.location.pathname.split('/teacher/')[1])
-  }, [props.location.pathname.split('/teacher/')[1]])
+    fetchPart(ID)
+  }, [ID])
+
   ResData.map(_class =>
     _class.teacher_class.map(_id => {
       axios
@@ -50,6 +54,7 @@ export default function ClassListSection(props) {
         })
     }),
   )
+  
   if (!List) {
     CardSectionList = 'Classes is not availabe'
   } else {
