@@ -17,12 +17,10 @@ const useStyles = makeStyles(theme => ({
 export default function ClassListSection(props) {
   const classes = useStyles()
   const [ResData, setResData] = useState([])
-  //const [Details, setDetails] = useState([])
 
   const ID = props.location.pathname.split('/teacher/')[1]
-
   var CardSectionList
-  const List = []
+
   useEffect(() => {
     function fetchPart(id) {
       axios
@@ -30,8 +28,7 @@ export default function ClassListSection(props) {
           headers: authHeader(),
         })
         .then(res => {
-          //console.log('ClassList-API-response: ' + res.data
-          setResData(res.data)
+          setResData(res.data.teacher_class)
         })
         .catch(err => {
           console.log('Error from classlist')
@@ -40,37 +37,13 @@ export default function ClassListSection(props) {
     fetchPart(ID)
   }, [ID])
 
-  ResData.map(_class =>
-    _class.teacher_class.map(_id => {
-      axios
-        .get('http://clz-api.vercel.app/api/teacher/classdetails/' + _id, {
-          headers: authHeader(),
-        })
-        .then(res => {
-          List.push(res.data)
-        })
-        .catch(err => {
-          console.log('Error from classdetails ', err)
-        })
-    }),
-  )
-
-  if (!List) {
+  if (!ResData) {
     CardSectionList = 'Classes is not availabe'
   } else {
-    CardSectionList = List.map(element =>
-      element.map(vale => <CardComponent data={vale} />),
-    )
+    CardSectionList = Object.values(ResData).map(value => (
+      <CardComponent data={value} />
+    ))
   }
 
-  return (
-    <div className={classes.root}>
-      <h1>
-        Hello..!!! Teacher {props.location.pathname} --{' '}
-        {props.location.pathname.split('/teacherprofile/')[1]} --{' '}
-        {props.location.pathname.split('/teacher/')[1]} 🉐
-      </h1>
-      {CardSectionList}
-    </div>
-  )
+  return <div className={classes.root}>{CardSectionList}</div>
 }

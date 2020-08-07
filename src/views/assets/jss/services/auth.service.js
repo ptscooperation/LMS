@@ -33,12 +33,7 @@ class AuthService {
       .then(response => {
         if (response.data.token) {
           localStorage.setItem('user', JSON.stringify(response.data))
-          //console.log('accTok: ', response.data.token)
         }
-        //console.log('Resp: ', response)
-        //console.log('accTok2: ', response.data.accessToken)
-        //console.log('accTok3: ', response.data.token)
-        //console.log('Login: ' + response.data)
         return response.data
       })
   }

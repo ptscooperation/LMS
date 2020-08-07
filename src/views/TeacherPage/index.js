@@ -28,6 +28,7 @@ function TeacherPage(props) {
       <Header id={props.match.params.id} history={props.history} />
       <div className={classNames(classes.mainX, classes.mainRaisedX)}>
         <div className={classes.containerX}>
+          <br />
           <Router history={hist}>
             <Switch>
               <Route path="/teacher/:id/addclass/:id" component={AddClassSection} />
