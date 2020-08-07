@@ -77,7 +77,7 @@ export default function AddClassSection(props) {
   useEffect(() => {
     function fetchPart(id) {
       axios
-        .get('http://clz-api.vercel.app/api/teacher/NI/' + id, {
+        .get('https://clz-api.vercel.app/api/teacher/NI/' + id, {
           headers: authHeader(),
         })
         .then(res => {
@@ -112,7 +112,7 @@ export default function AddClassSection(props) {
     }
 
     axios
-      .post('http://clz-api.vercel.app/api/teacher/addclass', data, {
+      .post('https://clz-api.vercel.app/api/teacher/addclass', data, {
         headers: authHeader(),
       })
       .then(res => {

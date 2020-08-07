@@ -24,7 +24,7 @@ export default function ClassListSection(props) {
   useEffect(() => {
     function fetchPart(id) {
       axios
-        .get('http://clz-api.vercel.app/api/teacher/classlist/' + id, {
+        .get('https://clz-api.vercel.app/api/teacher/classlist/' + id, {
           headers: authHeader(),
         })
         .then(res => {
