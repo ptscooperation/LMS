@@ -4,10 +4,9 @@ import { useQuery } from 'react-query'
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles'
 import authHeader from '../assets/jss/services/auth-header'
+import loadMe from '../assets/jss/loadGIF'
 //import Grid from '@material-ui/core/Grid'
 // @material-ui/icons
-// Images
-import loadGIF from '../assets/img/Rolling.gif'
 // core components
 import CardComponent from './card.component'
 
@@ -37,11 +36,7 @@ export default function ClassListSection(props) {
 
   if (!data) {
     if (isLoading) {
-      CardSectionList = (
-        <center>
-          <img src={loadGIF} alt="Loading" />
-        </center>
-      )
+      CardSectionList = loadMe()
     }
   } else {
     CardSectionList = Object.values(data).map(value => (

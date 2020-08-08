@@ -11,6 +11,7 @@ import Alert from '@material-ui/lab/Alert'
 // @material-ui/icons
 import SendIcon from '@material-ui/icons/Send'
 // core components
+import loadMe from '../assets/jss/loadGIF'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -82,6 +83,7 @@ export default function AddClassSection(props) {
       .then(res => res.data),
   )
   let _data = data
+  if (isLoading) return loadMe()
   if (error) {
     console.log('Error from classlist')
   }
