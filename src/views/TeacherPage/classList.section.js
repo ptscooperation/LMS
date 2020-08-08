@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import axios from 'axios'
+import { useQuery } from 'react-query'
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles'
 import authHeader from '../assets/jss/services/auth-header'
@@ -16,31 +17,28 @@ const useStyles = makeStyles(theme => ({
 
 export default function ClassListSection(props) {
   const classes = useStyles()
-  const [ResData, setResData] = useState([])
 
   const ID = props.location.pathname.split('/teacher/')[1]
   var CardSectionList
 
-  useEffect(() => {
-    function fetchPart(id) {
-      axios
-        .get('https://clz-api.vercel.app/api/teacher/classlist/' + id, {
-          headers: authHeader(),
-        })
-        .then(res => {
-          setResData(res.data.teacher_class)
-        })
-        .catch(err => {
-          console.log('Error from classlist')
-        })
-    }
-    fetchPart(ID)
-  }, [ID])
+  const { isLoading, error, data } = useQuery('repoData', () =>
+    axios
+      .get('https://clz-api.vercel.app/api/teacher/classlist/' + ID, {
+        headers: authHeader(),
+      })
+      .then(res => res.data.teacher_class),
+  )
 
-  if (!ResData) {
-    CardSectionList = 'Classes is not availabe'
+  if (error) {
+    console.log('Error from classlist')
+  }
+
+  if (!data) {
+    if (isLoading) {
+      CardSectionList = <h2>Loading...</h2>
+    }
   } else {
-    CardSectionList = Object.values(ResData).map(value => (
+    CardSectionList = Object.values(data).map(value => (
       <CardComponent data={value} />
     ))
   }
