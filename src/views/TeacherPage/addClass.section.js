@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
+import { useQuery } from 'react-query'
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles'
 import authHeader from '../assets/jss/services/auth-header'
@@ -64,7 +65,6 @@ export default function AddClassSection(props) {
   const classes = useStyles()
   const [alert, setAlert] = useState()
   const [alertType, setAlertType] = useState()
-  const [ResData, setResData] = useState([])
   const ID = props.location.pathname.split('/addclass/')[1]
 
   const [form, setValue] = useState({
@@ -74,22 +74,17 @@ export default function AddClassSection(props) {
     class_time: '',
   })
 
-  useEffect(() => {
-    function fetchPart(id) {
-      axios
-        .get('https://clz-api.vercel.app/api/teacher/NI/' + id, {
-          headers: authHeader(),
-        })
-        .then(res => {
-          //console.log('ViewCustomerSection-API-response: ' + res.map())
-          setResData(res.data)
-        })
-        .catch(err => {
-          console.log('Error from NI')
-        })
-    }
-    fetchPart(ID)
-  }, [ID])
+  const { isLoading, error, _data } = useQuery('repoData', () =>
+    axios
+      .get('https://clz-api.vercel.app/api/teacher/NI/' + id, {
+        headers: authHeader(),
+      })
+      .then(res => res.data),
+  )
+
+  if (error) {
+    console.log('Error from classlist')
+  }
 
   const updateField = e => {
     setValue({
@@ -107,8 +102,8 @@ export default function AddClassSection(props) {
       class_date: form.class_date,
       class_time: form.class_time,
       teacher_id: ID,
-      teacher_name: ResData.map(teacher => teacher.teacher_name).toString(),
-      institute_name: ResData.map(teacher => teacher.institute_name).toString(),
+      teacher_name: _data.map(teacher => teacher.teacher_name).toString(),
+      institute_name: _data.map(teacher => teacher.institute_name).toString(),
     }
 
     axios
