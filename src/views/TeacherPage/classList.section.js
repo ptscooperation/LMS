@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import authHeader from '../assets/jss/services/auth-header'
 //import Grid from '@material-ui/core/Grid'
 // @material-ui/icons
+// Images
+import loadGIF from '../assets/img/Rolling.gif'
 // core components
 import CardComponent from './card.component'
 
@@ -35,7 +37,7 @@ export default function ClassListSection(props) {
 
   if (!data) {
     if (isLoading) {
-      CardSectionList = <h2>Loading...</h2>
+      CardSectionList = <center><img src={loadGIF} alt="Loading" /></center>
     }
   } else {
     CardSectionList = Object.values(data).map(value => (

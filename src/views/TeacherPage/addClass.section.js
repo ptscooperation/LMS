@@ -74,14 +74,14 @@ export default function AddClassSection(props) {
     class_time: '',
   })
 
-  const { isLoading, error, _data } = useQuery('repoData', () =>
+  const { isLoading, error, data } = useQuery('repoData', () =>
     axios
-      .get('https://clz-api.vercel.app/api/teacher/NI/' + id, {
+      .get('https://clz-api.vercel.app/api/teacher/NI/' + ID, {
         headers: authHeader(),
       })
       .then(res => res.data),
   )
-
+  let _data = data
   if (error) {
     console.log('Error from classlist')
   }
