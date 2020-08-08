@@ -37,7 +37,11 @@ export default function ClassListSection(props) {
 
   if (!data) {
     if (isLoading) {
-      CardSectionList = <center><img src={loadGIF} alt="Loading" /></center>
+      CardSectionList = (
+        <center>
+          <img src={loadGIF} alt="Loading" />
+        </center>
+      )
     }
   } else {
     CardSectionList = Object.values(data).map(value => (
