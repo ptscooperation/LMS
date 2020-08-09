@@ -19,15 +19,15 @@ const useStyles = makeStyles(theme => ({
 export default function ClassListSection(props) {
   const classes = useStyles()
 
-  const ID = props.location.pathname.split('/teacher/')[1]
+  const ID = props.location.pathname.split('/student/')[1]
   var CardSectionList
 
   const { isLoading, error, data } = useQuery('repoData', () =>
     axios
-      .get('http://localhost:8082/api/teacher/classlist/' + ID, {
+      .get('http://localhost:8082/api/student/classlist/' + ID, {
         headers: authHeader(),
       })
-      .then(res => res.data.teacher_class),
+      .then(res => res.data.student_class),
   )
 
   if (error) {
