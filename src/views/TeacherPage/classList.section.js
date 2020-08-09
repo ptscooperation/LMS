@@ -40,7 +40,7 @@ export default function ClassListSection(props) {
     }
   } else {
     CardSectionList = Object.values(data).map(value => (
-      <CardComponent data={value} />
+      <CardComponent id={ID} history={props.history} data={value} />
     ))
   }
 

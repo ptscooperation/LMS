@@ -11,8 +11,11 @@ import IconButton from '@material-ui/core/IconButton'
 import Link from '@material-ui/core/Link'
 import Grid from '@material-ui/core/Grid'
 // @material-ui/icons
-import ShareIcon from '@material-ui/icons/Share'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import EditIcon from '@material-ui/icons/Edit'
+import EmailIcon from '@material-ui/icons/Email'
+import PersonAddIcon from '@material-ui/icons/PersonAdd'
+import WebIcon from '@material-ui/icons/Web'
+////import ShareIcon from '@material-ui/icons/Share'
 // core components
 
 const useStyles = makeStyles(theme => ({
@@ -28,7 +31,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function CardComponent(props) {
   const classes = useStyles()
+  const ID = props.id
   const Data = props.data
+  const History = props.history
 
   return (
     <Grid item xs={12} lg={4}>
@@ -47,17 +52,53 @@ export default function CardComponent(props) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Link>
-            <Button size="small" color="primary">
-              Pick it
-            </Button>
-          </Link>
-          <IconButton>
+          <IconButton
+            color="inherit"
+            aria-label="Edit the class"
+            title="Edit the class"
+            onClick={() => {
+              History.push(`/teacher/${ID}/editclass/${Data._id}`)
+              window.location.reload()
+            }}
+          >
+            <EditIcon />
+          </IconButton>
+          <IconButton
+            color="inherit"
+            aria-label="Send a Email"
+            title="Send a Email"
+            onClick={() => {
+              History.push(`/teacher/${ID}/sendemail/${Data._id}`)
+              window.location.reload()
+            }}
+          >
+            <EmailIcon />
+          </IconButton>
+          <IconButton
+            color="inherit"
+            aria-label="Add student"
+            title="Add student"
+            onClick={() => {
+              History.push(`/teacher/${ID}/addstudent/${Data._id}`)
+              window.location.reload()
+            }}
+          >
+            <PersonAddIcon />
+          </IconButton>
+          <IconButton
+            color="inherit"
+            aria-label="Class feed"
+            title="Class feed"
+            onClick={() => {
+              History.push(`/teacher/${ID}/classfeed/${Data._id}`)
+              window.location.reload()
+            }}
+          >
+            <WebIcon />
+          </IconButton>
+          {/* <IconButton>
             <ShareIcon />
-          </IconButton>
-          <IconButton>
-            <ExpandMoreIcon />
-          </IconButton>
+          </IconButton> */}
         </CardActions>
       </Card>
     </Grid>
