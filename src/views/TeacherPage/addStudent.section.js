@@ -76,7 +76,7 @@ export default function AddStudentSection(props) {
     }
     console.log('D :: ', data)
     axios
-      .post(`http://localhost:8082/api/teacher/addstudent`, data, {
+      .post(`https://clz-api.vercel.app/api/teacher/addstudent`, data, {
         headers: authHeader(),
       })
       .then(res => {
