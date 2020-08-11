@@ -31,13 +31,20 @@ const useStyles = makeStyles(theme => ({
 
 export default function CardComponent(props) {
   const classes = useStyles()
-  //const ID = props.id
+  const ID = props.id
   const Data = props.data
-  //const History = props.history
+  const uid = props.uid
+  const History = props.history
 
   return (
     <Grid item xs={12} lg={4}>
-      <Card className={classes.root}>
+      <Card
+        onClick={() => {
+          History.push(`/student/${uid}/feed/${Data._id}`)
+          window.location.reload()
+        }}
+        className={classes.root}
+      >
         <CardActionArea>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">

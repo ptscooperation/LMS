@@ -27,7 +27,7 @@ export default function ClassListSection(props) {
       .get('https://clz-api.vercel.app/api/student/classlist/' + ID, {
         headers: authHeader(),
       })
-      .then(res => res.data.student_class),
+      .then(res => res.data),
   )
 
   if (error) {
@@ -39,8 +39,13 @@ export default function ClassListSection(props) {
       CardSectionList = loadMe()
     }
   } else {
-    CardSectionList = Object.values(data).map(value => (
-      <CardComponent id={ID} history={props.history} data={value} />
+    CardSectionList = Object.values(data.student_class).map(value => (
+      <CardComponent
+        id={ID}
+        history={props.history}
+        data={value}
+        uid={data.student_uid}
+      />
     ))
   }
 
