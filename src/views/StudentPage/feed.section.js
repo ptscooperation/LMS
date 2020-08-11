@@ -55,8 +55,7 @@ export default function FeedSection(props) {
     // }
     Object.values(data).map(value =>
       value.student_list.map(
-        x =>
-          (PostList = `Pay Day : ${x.student_payday} UID : ${x.student_uid}`),
+        x => (PostList = `Pay Day : ${x.student_payday} UID : ${x.student_uid}`),
       ),
     )
   }
