@@ -40,7 +40,7 @@ export default function CardComponent(props) {
     <Grid item xs={12} lg={4}>
       <Card
         onClick={() => {
-          History.push(`/student/${uid}/feed/${Data._id}`)
+          History.push(`/student/${ID}/feed/${Data._id}/${uid}`)
           window.location.reload()
         }}
         className={classes.root}

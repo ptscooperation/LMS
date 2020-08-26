@@ -18,8 +18,8 @@ const useStyles = makeStyles(theme => ({
 export default function FeedSection(props) {
   const classes = useStyles()
 
-  const classID = props.location.pathname.split('/feed/')[1]
-  const studentID = props.location.pathname.match('/student/(.*)/feed/')[1]
+  const classID = props.location.pathname.split('/feed/')[1].split('/')[0]
+  const studentID = props.location.pathname.split('/feed/')[1].split('/')[1]
   let PostList
 
   const payload = {
@@ -55,14 +55,13 @@ export default function FeedSection(props) {
     // }
     Object.values(data).map(value =>
       value.student_list.map(
-        x =>
-          (PostList = `Pay Day : ${x.student_payday} UID : ${x.student_uid}`),
+        x => (PostList = `Pay Day : ${x.student_payday} UID : ${x.student_uid}`),
       ),
     )
   }
 
   return (
-    <div>
+    <div className={classes.root}>
       <h2>
         classID {classID}
         <br />
