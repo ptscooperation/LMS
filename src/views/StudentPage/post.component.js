@@ -25,9 +25,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function PostComponent(props) {
   const classes = useStyles()
-//  const ID = props.id
+  //  const ID = props.id
   const Data = props.data
-//  const History = props.history
+  //  const History = props.history
 
   const getMarkdownText = () => {
     var rawMarkup = marked(Data, { sanitize: true })

@@ -44,12 +44,14 @@ export default function FeedSection(props) {
       PostList = loadMe()
     }
   } else {
-    PostList = Object.values(data).map(value => (value.post_list
-    ).map(x => (   
-    <PostComponent 
-      //id={classID} history={props.history} 
-      data={x.post_data} />
-    )))
+    PostList = Object.values(data).map(value =>
+      value.post_list.map(x => (
+        <PostComponent
+          //id={classID} history={props.history}
+          data={x.post_data}
+        />
+      )),
+    )
   }
 
   return (
