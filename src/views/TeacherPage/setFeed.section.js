@@ -74,7 +74,7 @@ export default function SetFeedSection(props) {
 
   const { isLoading, error, data } = useQuery('repoData', () =>
     axios
-      .get('http://localhost:8082/api/teacher/postlist/' + ID, {
+      .get('https://clz-api.vercel.app/api/teacher/postlist/' + ID, {
         headers: authHeader(),
       })
       .then(res => res.data.post_list),
