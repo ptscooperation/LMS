@@ -8,6 +8,7 @@ import loadMe from '../assets/jss/loadGIF'
 //import Grid from '@material-ui/core/Grid'
 // @material-ui/icons
 // core components
+import PostComponent from './post.component'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,7 +29,7 @@ export default function FeedSection(props) {
   }
   const { isLoading, error, data } = useQuery('repoData', () =>
     axios
-      .post('https://clz-api.vercel.app/api/student/feed', payload, {
+      .post('http://localhost:8082/api/student/feed', payload, {
         headers: authHeader(),
       })
       .then(res => res.data),
@@ -43,21 +44,12 @@ export default function FeedSection(props) {
       PostList = loadMe()
     }
   } else {
-    // CardSectionList = Object.values(data).map(value => (
-    //   <CardComponent id={ID} history={props.history} data={value} />
-    // ))
-    // if (data.arrears) {
-    //   PostList = 'You was not pay for this month..!!!'
-    // } else {
-    //   PostList = `student_payday :: ${data.student_list.student_list}
-    //   <br /> `
-    //   console.log(data)
-    // }
-    Object.values(data).map(value =>
-      value.student_list.map(
-        x => (PostList = `Pay Day : ${x.student_payday} UID : ${x.student_uid}`),
-      ),
-    )
+    PostList = Object.values(data).map(value => (value.post_list
+    ).map(x => (   
+    <PostComponent 
+      //id={classID} history={props.history} 
+      data={x.post_data} />
+    )))
   }
 
   return (
