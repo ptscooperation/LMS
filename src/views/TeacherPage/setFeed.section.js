@@ -31,33 +31,32 @@ export default function SetFeedSection(props) {
     return { __html: rawMarkup }
   }
 
-const onPost = e => {
-  e.preventDefault()
+  const onPost = e => {
+    e.preventDefault()
 
-  const data = {
-    class_id: ID,
-    post_data: textValue,
+    const data = {
+      class_id: ID,
+      post_data: textValue,
+    }
+    console.log('D :: ', data)
+    axios
+      .post(`http://localhost:8082/api/teacher/addpost`, data, {
+        headers: authHeader(),
+      })
+      .then(res => {
+        setTextValue('')
+        //setValue({
+        //  student_uid: '',
+        //})
+        setAlertType('success')
+        setAlert(res.status)
+      })
+      .catch(err => {
+        setAlertType('error')
+        setAlert(err.message)
+        console.log('Error in AddStudent!')
+      })
   }
-  console.log('D :: ', data)
-  axios
-  .post(`http://localhost:8082/api/teacher/addpost`, data, {
-    headers: authHeader(),
-  })
-  .then(res => {
-    setTextValue('')
-    //setValue({
-    //  student_uid: '',
-    //})
-    setAlertType('success')
-    setAlert(res.status)
-  })
-  .catch(err => {
-    setAlertType('error')
-    setAlert(err.message)
-    console.log('Error in AddStudent!')
-  })
-
-}
 
   return (
     <div
