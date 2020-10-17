@@ -10,37 +10,37 @@ import IconButton from '@material-ui/core/IconButton'
 import Grid from '@material-ui/core/Grid'
 // @material-ui/icons
 import EditIcon from '@material-ui/icons/Edit'
-import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteIcon from '@material-ui/icons/Delete'
 
 const useStyles = makeStyles(theme => ({
-    root: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-      marginBottom: theme.spacing(2),
-      maxWidth: 345,
-      boxShadow:
-        '0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)',
-    },
-  }))
+  root: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    marginBottom: theme.spacing(2),
+    maxWidth: 345,
+    boxShadow:
+      '0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)',
+  },
+}))
 
-  export default function PostComponent(props) {
-    const classes = useStyles()
-    const ID = props.id
-    const Data = props.data
-    const History = props.history  
+export default function PostComponent(props) {
+  const classes = useStyles()
+  const ID = props.id
+  const Data = props.data
+  const History = props.history
 
-    const getMarkdownText = () => {
-        var rawMarkup = marked(Data.post_data, { sanitize: true })
-        return { __html: rawMarkup }
-      }
+  const getMarkdownText = () => {
+    var rawMarkup = marked(Data.post_data, { sanitize: true })
+    return { __html: rawMarkup }
+  }
 
-    return (
-        <Grid item xs={12} lg={4}>
-        <Card className={classes.root}>
+  return (
+    <Grid item xs={12} lg={4}>
+      <Card className={classes.root}>
         <CardActionArea>
           <CardContent>
-        <div dangerouslySetInnerHTML={getMarkdownText()} />
-        </CardContent>
+            <div dangerouslySetInnerHTML={getMarkdownText()} />
+          </CardContent>
         </CardActionArea>
         <CardActions>
           <IconButton
@@ -65,8 +65,8 @@ const useStyles = makeStyles(theme => ({
           >
             <DeleteIcon />
           </IconButton>
-          </CardActions>
-        </Card>
+        </CardActions>
+      </Card>
     </Grid>
-    )
+  )
 }

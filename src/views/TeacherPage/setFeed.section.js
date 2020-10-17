@@ -72,7 +72,6 @@ export default function SetFeedSection(props) {
       })
   }
 
-
   const { isLoading, error, data } = useQuery('repoData', () =>
     axios
       .get('http://localhost:8082/api/teacher/postlist/' + ID, {
@@ -80,7 +79,7 @@ export default function SetFeedSection(props) {
       })
       .then(res => res.data.post_list),
   )
-console.log(data)
+  console.log(data)
   if (error) {
     console.log('Error from postlist')
   }
