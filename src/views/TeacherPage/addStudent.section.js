@@ -126,7 +126,7 @@ export default function AddStudentSection(props) {
       student_uid: form.student_uid_s,
     }
     axios
-      .post(`http://localhost:8082/api/teacher/searchstudent`, _data, {
+      .post(`https://clz-api.vercel.app/api/teacher/searchstudent`, _data, {
         headers: authHeader(),
       })
       .then(res => {
@@ -143,7 +143,7 @@ export default function AddStudentSection(props) {
       student_uid: form.student_uid_s,
     }
     axios
-      .post(`http://localhost:8082/api/teacher/studentfee`, __data, {
+      .post(`https://clz-api.vercel.app/api/teacher/studentfee`, __data, {
         headers: authHeader(),
       })
       .then(res => {

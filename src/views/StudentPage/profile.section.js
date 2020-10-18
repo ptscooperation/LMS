@@ -29,7 +29,7 @@ export default function StudentProfileSection(props) {
 
   const { isLoading, error, data } = useQuery('repoData', () =>
     axios
-      .get('http://localhost:8082/api/student/studentprofile/' + ID, {
+      .get('https://clz-api.vercel.app/api/student/studentprofile/' + ID, {
         headers: authHeader(),
       })
       .then(res => res.data),
