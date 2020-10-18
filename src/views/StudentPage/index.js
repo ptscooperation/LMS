@@ -16,6 +16,7 @@ import studentPageStyles from '../assets/css/_views/studentPageStyle.js'
 // Sections for this page
 import ClassListSection from './classList.section'
 import FeedSection from './feed.section'
+import StudentProfile from './profile.section'
 
 const useStyles = makeStyles(studentPageStyles)
 var hist = createBrowserHistory()
@@ -31,6 +32,10 @@ function StudentPage(props) {
           <br />
           <Router history={hist}>
             <Switch>
+              <Route
+                path="/student/:id/studentprofile/:id"
+                component={StudentProfile}
+              />
               <Route path="/student/:id/feed/:id" component={FeedSection} />
               <Route path="/" component={ClassListSection} />
             </Switch>

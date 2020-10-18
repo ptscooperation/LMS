@@ -1,12 +1,22 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 // @material-ui/core components
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, withStyles } from '@material-ui/core/styles'
+import { green } from '@material-ui/core/colors'
 import authHeader from '../assets/jss/services/auth-header'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Alert from '@material-ui/lab/Alert'
+import Paper from '@material-ui/core/Paper'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableRow from '@material-ui/core/TableRow'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Checkbox from '@material-ui/core/Checkbox'
+import FormLabel from '@material-ui/core/FormLabel'
 // @material-ui/icons
 import SearchIcon from '@material-ui/icons/Search'
 import AddIcon from '@material-ui/icons/Add'
@@ -47,6 +57,16 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+const GreenCheckbox = withStyles({
+  root: {
+    color: green[400],
+    '&$checked': {
+      color: green[600],
+    },
+  },
+  checked: {},
+})(props => <Checkbox color="default" {...props} />)
+
 export default function AddStudentSection(props) {
   const classes = useStyles()
 
@@ -56,7 +76,13 @@ export default function AddStudentSection(props) {
   })
   const [alert, setAlert] = useState()
   const [alertType, setAlertType] = useState()
+  const [alert_, setAlert_] = useState()
+  const [alertType_, setAlertType_] = useState()
   const [ResData, setResData] = useState([])
+  const [state, setState] = useState({
+    checkedOne: false,
+    paymentDate: new Date(2008, 1, 22),
+  })
   const ID = props.location.pathname.split('/addstudent/')[1]
 
   const updateField = e => {
@@ -95,8 +121,12 @@ export default function AddStudentSection(props) {
   const onSearch = e => {
     e.preventDefault()
 
+    const _data = {
+      class_id: ID,
+      student_uid: form.student_uid_s,
+    }
     axios
-      .get(`http://localhost:8082/api/teacher/searchstudent/` + form.student_uid_s, {
+      .post(`https://clz-api.vercel.app/api/teacher/searchstudent`, _data, {
         headers: authHeader(),
       })
       .then(res => {
@@ -107,14 +137,73 @@ export default function AddStudentSection(props) {
       })
   }
 
+  const handleChangeOne = event => {
+    const __data = {
+      class_id: ID,
+      student_uid: form.student_uid_s,
+    }
+    axios
+      .post(`https://clz-api.vercel.app/api/teacher/studentfee`, __data, {
+        headers: authHeader(),
+      })
+      .then(res => {
+        setValue({
+          student_uid_s: '',
+        })
+        setAlertType_('success')
+        setAlert_(res.status)
+        setState({ checkedOne: true })
+      })
+      .catch(err => {
+        setAlertType_('error')
+        setAlert_(err.message)
+        console.log('Error in UpdateFree!')
+      })
+  }
+
   var StudentDetails
+  const oneDay = 24 * 60 * 60 * 1000
+  var present_date = new Date()
 
   if (!ResData) {
     StudentDetails = 'Student was not added'
   } else {
-    // StudentDetails = ResData.map((part, index) => (
-    //   <StudentDetailsTable part={part} key={index} />
-    // ))
+    StudentDetails = ResData.map(val =>
+      val.student_list.map(x => (
+        <TableContainer component={Paper}>
+          <Table aria-label="fee table">
+            <TableBody>
+              <TableRow>
+                <TableCell align="left">
+                  <FormLabel>{x.student_payday}</FormLabel>
+                </TableCell>
+                <TableCell align="left">
+                  <FormControlLabel
+                    control={
+                      <GreenCheckbox
+                        //checked={state.checkedOne}
+                        checked={
+                          !(
+                            Math.round(
+                              Math.abs(
+                                (present_date - new Date(x.student_payday)) / oneDay,
+                              ),
+                            ) >= 30
+                          ) || state.checkedOne
+                        }
+                        onChange={handleChangeOne}
+                        name="checkedOne"
+                      />
+                    }
+                    label="Paid"
+                  />
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )),
+    )
   }
 
   return (
@@ -170,6 +259,7 @@ export default function AddStudentSection(props) {
           </Button>
         </Grid>
         {StudentDetails}
+        <Alert severity={`${alertType_}`}>{alert_}</Alert>
       </Grid>
     </div>
   )
