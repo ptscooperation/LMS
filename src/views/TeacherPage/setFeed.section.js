@@ -54,7 +54,7 @@ export default function SetFeedSection(props) {
     }
     console.log('D :: ', data)
     axios
-      .post(`http://localhost:8082/api/teacher/addpost`, data, {
+      .post(`https://clz-api.vercel.app/api/teacher/addpost`, data, {
         headers: authHeader(),
       })
       .then(res => {
