@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 export default function SetFeedSection(props) {
   const classes = useStyles()
 
-  const [textValue, setTextValue] = useState('')
+  const [textValue, setTextValue] = useState('Hello World!!!')
   const [alert, setAlert] = useState()
   const [alertType, setAlertType] = useState()
 
@@ -35,7 +35,7 @@ export default function SetFeedSection(props) {
   const onEvents = {
     change: function () {
       // the 'this' variable can get SimpleMDE instance
-      console.log(this.value())
+      //console.log(this.value())
       setTextValue(this.value())
     },
   }
@@ -100,7 +100,7 @@ export default function SetFeedSection(props) {
       <br />
       <ISimpleMDE
         option={option}
-        text={'Hello World!!!'}
+        text={textValue}
         onReady={onReady}
         onEvents={onEvents}
       />
