@@ -43,7 +43,7 @@ export default function PostComponent(props) {
     if (result) {
       //Logic to delete the item
       axios
-        .delete('http://localhost:8082/api/teacher/deletepost/' + id, {
+        .delete('https://clz-api.vercel.app/api/teacher/deletepost/' + id, {
           headers: authHeader(),
         })
         .then(res => {
