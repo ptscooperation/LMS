@@ -18,8 +18,9 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 // Images
 ////import LogoImg from '../assets/img/300Logo.png'
 ////import LogoImgTwo from '../assets/img/juventus-logo.gif'
-import LogoImgThree from '../assets/img/logo-2.png'
-import LogoImgFour from '../assets/img/logo-javascript.png'
+////import LogoImgThree from '../assets/img/logo-2.png'
+////import LogoImgFour from '../assets/img/logo-javascript.png'
+import LMSLogo from '../assets/img/lms-logo.png'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -161,10 +162,10 @@ function LoginPage(props) {
       >
         <Grid item className={classes.gridItem}>
           <Hidden smDown implementation="css">
-            <img src={LogoImgThree} alt="Logo" />
+            <img src={LMSLogo} with="300px" height="300px" alt="Logo" />
           </Hidden>
           <Hidden smUp implementation="css">
-            <img src={LogoImgFour} alt="Logo" />
+            <img src={LMSLogo} with="240px" height="240px" alt="Logo" />
           </Hidden>
         </Grid>
         <Grid
