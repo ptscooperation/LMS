@@ -148,7 +148,7 @@ export default function PersistentDrawerRight(props) {
               }}
             >
               <AssessmentIcon />
-            </IconButton>
+            </IconButton> */}
             <IconButton
               color="inherit"
               aria-label="Add a new class"
@@ -160,7 +160,7 @@ export default function PersistentDrawerRight(props) {
             >
               <NoteAddIcon />
             </IconButton>
-            <IconButton
+            {/* <IconButton
               color="inherit"
               aria-label="Profile"
               title="Profile"
@@ -170,7 +170,7 @@ export default function PersistentDrawerRight(props) {
               }}
             >
               <AccountCircleIcon />
-            </IconButton> */}
+            </IconButton>  */}
           </Hidden>
         </Toolbar>
       </AppBar>
