@@ -52,7 +52,7 @@ export default function CardComponent(props) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <IconButton
+          {/* <IconButton
             color="inherit"
             aria-label="Edit the class"
             title="Edit the class"
@@ -73,7 +73,7 @@ export default function CardComponent(props) {
             }}
           >
             <EmailIcon />
-          </IconButton>
+          </IconButton> */}
           <IconButton
             color="inherit"
             aria-label="Add student"
