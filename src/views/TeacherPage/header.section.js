@@ -12,12 +12,12 @@ import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import ListItem from '@material-ui/core/ListItem'
+////import ListItem from '@material-ui/core/ListItem'
 import Hidden from '@material-ui/core/Hidden'
-import NoteAddIcon from '@material-ui/icons/NoteAdd'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle'
-import AssessmentIcon from '@material-ui/icons/Assessment'
-import ReceiptIcon from '@material-ui/icons/Receipt'
+////import NoteAddIcon from '@material-ui/icons/NoteAdd'
+/////import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+/////import AssessmentIcon from '@material-ui/icons/Assessment'
+/////import ReceiptIcon from '@material-ui/icons/Receipt'
 
 const drawerWidth = 82
 
