@@ -83,7 +83,7 @@ export default function Footer() {
                 <Link href="https://discord.gg/S9BNMuTNTa">Discord</Link>
               </li>
               <li className={classes.listItem}>
-                <Link href="mailto:timnirmal@gmail.com">timnirmal@gmail.com</Link>
+                <Link href="mailto:info@ptscooperation.com">info@ptscooperation.com</Link>
               </li>
               <li className={classes.listItem}>
                 <Link href="tel:+94-712 280 951">+94-712 280 951</Link>
