@@ -56,14 +56,14 @@ export default function FeedSection(props) {
 
   return (
     <div className={classes.root}>
-      <h2>
+      {/* <h2>
         classID {classID}
         <br />
         studentID {studentID}
         <br />
-        <hr />
+        <hr /> */}
         {PostList}
-      </h2>
+      {/* </h2> */}
     </div>
   )
 }
