@@ -62,7 +62,7 @@ export default function FeedSection(props) {
         studentID {studentID}
         <br />
         <hr /> */}
-        {PostList}
+      {PostList}
       {/* </h2> */}
     </div>
   )
