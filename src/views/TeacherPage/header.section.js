@@ -113,7 +113,7 @@ export default function PersistentDrawerRight(props) {
             noWrap
             className={classes.title}
           >
-            Kallathoni
+            LMS
           </Typography>
           <Hidden mdUp implementation="js">
             <IconButton
