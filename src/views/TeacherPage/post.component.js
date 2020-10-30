@@ -11,7 +11,7 @@ import CardContent from '@material-ui/core/CardContent'
 import IconButton from '@material-ui/core/IconButton'
 import Grid from '@material-ui/core/Grid'
 // @material-ui/icons
-import EditIcon from '@material-ui/icons/Edit'
+////import EditIcon from '@material-ui/icons/Edit'
 import DeleteIcon from '@material-ui/icons/Delete'
 
 const useStyles = makeStyles(theme => ({
@@ -29,9 +29,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function PostComponent(props) {
   const classes = useStyles()
-  const ID = props.id
+////  const ID = props.id
   const Data = props.data
-  const History = props.history
+////  const History = props.history
 
   const getMarkdownText = () => {
     var rawMarkup = marked(Data.post_data, { sanitize: true })
@@ -63,7 +63,7 @@ export default function PostComponent(props) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <IconButton
+          {/* <IconButton
             color="inherit"
             aria-label="Edit the post"
             title="Edit the post"
@@ -73,7 +73,7 @@ export default function PostComponent(props) {
             }}
           >
             <EditIcon />
-          </IconButton>
+          </IconButton> */}
           <IconButton
             color="inherit"
             aria-label="Delete the post"
