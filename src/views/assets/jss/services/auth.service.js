@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'https://clz-api.vercel.app/'
+const API_URL = 'https://api.lms.pts.asia/'
 //const API_URL = 'http://localhost:8082/'
 
 class AuthService {

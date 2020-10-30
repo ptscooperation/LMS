@@ -101,7 +101,7 @@ export default function AddStudentSection(props) {
     }
     console.log('D :: ', data)
     axios
-      .post(`https://clz-api.vercel.app/api/teacher/addstudent`, data, {
+      .post(`https://api.lms.pts.asia/api/teacher/addstudent`, data, {
         headers: authHeader(),
       })
       .then(res => {
@@ -126,7 +126,7 @@ export default function AddStudentSection(props) {
       student_uid: form.student_uid_s,
     }
     axios
-      .post(`https://clz-api.vercel.app/api/teacher/searchstudent`, _data, {
+      .post(`https://api.lms.pts.asia/api/teacher/searchstudent`, _data, {
         headers: authHeader(),
       })
       .then(res => {
@@ -143,7 +143,7 @@ export default function AddStudentSection(props) {
       student_uid: form.student_uid_s,
     }
     axios
-      .post(`https://clz-api.vercel.app/api/teacher/studentfee`, __data, {
+      .post(`https://api.lms.pts.asia/api/teacher/studentfee`, __data, {
         headers: authHeader(),
       })
       .then(res => {

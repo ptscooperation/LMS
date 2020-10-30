@@ -29,7 +29,7 @@ export default function FeedSection(props) {
   }
   const { isLoading, error, data } = useQuery('repoData', () =>
     axios
-      .post('https://clz-api.vercel.app/api/student/feed', payload, {
+      .post('https://api.lms.pts.asia/api/student/feed', payload, {
         headers: authHeader(),
       })
       .then(res => res.data),

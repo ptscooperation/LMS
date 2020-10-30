@@ -77,7 +77,7 @@ export default function AddClassSection(props) {
 
   const { isLoading, error, data } = useQuery('repoData', () =>
     axios
-      .get('https://clz-api.vercel.app/api/teacher/NI/' + ID, {
+      .get('https://api.lms.pts.asia/api/teacher/NI/' + ID, {
         headers: authHeader(),
       })
       .then(res => res.data),
@@ -109,7 +109,7 @@ export default function AddClassSection(props) {
     }
 
     axios
-      .post('https://clz-api.vercel.app/api/teacher/addclass', data, {
+      .post('https://api.lms.pts.asia/api/teacher/addclass', data, {
         headers: authHeader(),
       })
       .then(res => {
