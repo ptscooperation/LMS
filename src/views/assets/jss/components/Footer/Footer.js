@@ -80,12 +80,13 @@ export default function Footer() {
             </Typography>
             <ul className={classes.list}>
               <li className={classes.listItem}>
-                <Link href="mailto:info@taxilaradioclub.com">
-                  info@taxilaradioclub.com
-                </Link>
+                <Link href="https://discord.gg/S9BNMuTNTa">Discord</Link>
               </li>
               <li className={classes.listItem}>
-                <Link href="tel:+94-714 797 084">+94-714 797 084</Link>
+                <Link href="mailto:timnirmal@gmail.com">timnirmal@gmail.com</Link>
+              </li>
+              <li className={classes.listItem}>
+                <Link href="tel:+94-712 280 951">+94-712 280 951</Link>
               </li>
             </ul>
           </Grid>
@@ -95,8 +96,8 @@ export default function Footer() {
             </Typography>
             <ul className={classes.list}>
               <li className={classes.listItem}>
-                <Link href="https://goo.gl/maps/C35BPTyd6PXqi3e28" target="blank">
-                  Taxila Central College <br></br>Horana
+                <Link href="https://goo.gl/maps/r8FoQPxnueXxhsGe9" target="blank">
+                  Okanduwa <br></br>Bandaragama
                 </Link>
               </li>
             </ul>
@@ -108,7 +109,7 @@ export default function Footer() {
                 <Favorite className={classes.icon_} /> by{' '}
                 <Link href="https://github.com/ebonynon" target="blank">
                   xe-non
-                </Link>{' '}
+                </Link>
                 for a better web.
               </Typography>
             </div>
