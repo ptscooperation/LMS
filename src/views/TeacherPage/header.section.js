@@ -127,7 +127,7 @@ export default function PersistentDrawerRight(props) {
             </IconButton>
           </Hidden>
           <Hidden smDown implementation="css">
-            <IconButton
+            {/* <IconButton
               color="inherit"
               aria-label="Bill"
               title="Bill"
@@ -170,7 +170,7 @@ export default function PersistentDrawerRight(props) {
               }}
             >
               <AccountCircleIcon />
-            </IconButton>
+            </IconButton> */}
           </Hidden>
         </Toolbar>
       </AppBar>
@@ -190,7 +190,7 @@ export default function PersistentDrawerRight(props) {
         </div>
         <Divider />
         <List>
-          <ListItem button>
+          {/* <ListItem button>
             <IconButton
               color="inherit"
               aria-label="Bill"
@@ -241,7 +241,7 @@ export default function PersistentDrawerRight(props) {
             >
               <AccountCircleIcon />
             </IconButton>
-          </ListItem>
+          </ListItem> */}
         </List>
       </Drawer>
     </div>
