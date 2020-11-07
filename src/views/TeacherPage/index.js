@@ -18,6 +18,7 @@ import AddClassSection from './addClass.section'
 import ClassListSection from './classList.section'
 import AddStudentSection from './addStudent.section'
 import SetFeedSection from './setFeed.section'
+import StudentListSection from './studentList.section'
 
 const useStyles = makeStyles(teacherPageStyles)
 var hist = createBrowserHistory()
@@ -33,6 +34,10 @@ function TeacherPage(props) {
           <br />
           <Router history={hist}>
             <Switch>
+              <Route
+                path="/teacher/:id/studentlist/:id"
+                component={StudentListSection}
+              />
               <Route path="/teacher/:id/classfeed/:id" component={SetFeedSection} />
               <Route
                 path="/teacher/:id/addstudent/:id"
