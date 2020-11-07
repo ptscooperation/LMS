@@ -5,6 +5,13 @@ import { useQuery } from 'react-query'
 import { makeStyles } from '@material-ui/core/styles'
 import authHeader from '../assets/jss/services/auth-header'
 import loadMe from '../assets/jss/loadGIF'
+import Paper from '@material-ui/core/Paper'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableRow from '@material-ui/core/TableRow'
+import FormLabel from '@material-ui/core/FormLabel'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -13,7 +20,10 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function StudentListSection(props) {
+  const classes = useStyles()
+
   const ID = props.location.pathname.split('/studentlist/')[1]
+  var StudentListTable
 
   const { isLoading, error, data } = useQuery('repoData', () =>
     axios
@@ -29,11 +39,26 @@ export default function StudentListSection(props) {
 
   if (!data) {
     if (isLoading) {
-      CardSectionList = loadMe()
+      StudentListTable = loadMe()
     }
   } else {
-    console.log(data)
+    StudentListTable = Object.values(data[0])[1].map(value => (
+      <TableContainer component={Paper}>
+        <Table aria-label="fee table">
+          <TableBody>
+            <TableRow>
+              <TableCell align="left">
+                <FormLabel>{value.student_uid}</FormLabel>
+              </TableCell>
+              <TableCell align="left">
+                <FormLabel>{value.student_payday}</FormLabel>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+    ))
   }
 
-  return <h1>Working</h1>
+  return <div className={classes.root}>{StudentListTable}</div>
 }
