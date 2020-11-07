@@ -16,6 +16,7 @@ import Grid from '@material-ui/core/Grid'
 import PersonAddIcon from '@material-ui/icons/PersonAdd'
 import WebIcon from '@material-ui/icons/Web'
 ////import ShareIcon from '@material-ui/icons/Share'
+import ListIcon from '@material-ui/icons/List'
 // core components
 
 const useStyles = makeStyles(theme => ({
@@ -74,6 +75,17 @@ export default function CardComponent(props) {
           >
             <EmailIcon />
           </IconButton> */}
+          <IconButton
+            color="inherit"
+            aria-label="Student List"
+            title="Student List"
+            onClick={() => {
+              History.push(`/teacher/${ID}/studentlist/${Data._id}`)
+              window.location.reload()
+            }}
+          >
+            <ListIcon />
+          </IconButton>
           <IconButton
             color="inherit"
             aria-label="Add student"
