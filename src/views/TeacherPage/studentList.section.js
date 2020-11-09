@@ -45,7 +45,6 @@ export default function StudentListSection(props) {
     }
   } else {
     function pay(day) {
-      console.log(Math.round(Math.abs((present_date - new Date(day)) / oneDay)))
       if (Math.round(Math.abs((present_date - new Date(day)) / oneDay)) < 30) {
         return 'Paid'
       } else {
