@@ -24,10 +24,13 @@ export default function StudentListSection(props) {
 
   const ID = props.location.pathname.split('/studentlist/')[1]
   var StudentListTable
+  const oneDay = 24 * 60 * 60 * 1000
+  var present_date = new Date()
+  var payment = ''
 
   const { isLoading, error, data } = useQuery('repoData', () =>
     axios
-      .get('https://clz-api.vercel.app/api/teacher/studentlist/' + ID, {
+      .get('https://api.lms.pts.asia/api/teacher/studentlist/' + ID, {
         headers: authHeader(),
       })
       .then(res => res.data),
@@ -42,6 +45,19 @@ export default function StudentListSection(props) {
       StudentListTable = loadMe()
     }
   } else {
+    if (
+      Math.round(
+        Math.abs(
+          (present_date -
+            new Date(Object.values(data[0])[1].map(value => value.student_payday))) /
+            oneDay,
+        ),
+      ) >= 30
+    ) {
+      payment = 'Paid'
+    } else {
+      payment = 'Not Paid'
+    }
     StudentListTable = Object.values(data[0])[1].map(value => (
       <TableContainer component={Paper}>
         <Table aria-label="fee table">
@@ -52,6 +68,9 @@ export default function StudentListSection(props) {
               </TableCell>
               <TableCell align="left">
                 <FormLabel>{value.student_payday}</FormLabel>
+              </TableCell>
+              <TableCell align="left">
+                <FormLabel>{payment}</FormLabel>
               </TableCell>
             </TableRow>
           </TableBody>
