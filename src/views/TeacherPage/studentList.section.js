@@ -26,7 +26,6 @@ export default function StudentListSection(props) {
   var StudentListTable
   const oneDay = 24 * 60 * 60 * 1000
   var present_date = new Date()
-  var payment = ''
 
   const { isLoading, error, data } = useQuery('repoData', () =>
     axios
@@ -45,20 +44,14 @@ export default function StudentListSection(props) {
       StudentListTable = loadMe()
     }
   } else {
-    if (
-      Math.round(
-        Math.abs(
-          (present_date -
-            new Date(Object.values(data[0])[1].map(value => value.student_payday))) /
-            oneDay,
-        ),
-      ) >= 30
-    ) {
-      payment = 'Paid'
-    } else {
-      payment = 'Not Paid'
+    function pay(day) {
+      if (Math.round(Math.abs((present_date - new Date(day)) / oneDay)) < 30) {
+        return 'Paid'
+      } else {
+        return 'Not Paid'
+      }
     }
-    StudentListTable = Object.values(data[0])[1].map(value => (
+    StudentListTable = Object.values(data.student_list).map(value => (
       <TableContainer component={Paper}>
         <Table aria-label="fee table">
           <TableBody>
@@ -70,7 +63,7 @@ export default function StudentListSection(props) {
                 <FormLabel>{value.student_payday}</FormLabel>
               </TableCell>
               <TableCell align="left">
-                <FormLabel>{payment}</FormLabel>
+                <FormLabel>{pay(value.student_payday)}</FormLabel>
               </TableCell>
             </TableRow>
           </TableBody>
