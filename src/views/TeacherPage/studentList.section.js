@@ -30,7 +30,7 @@ export default function StudentListSection(props) {
 
   const { isLoading, error, data } = useQuery('repoData', () =>
     axios
-      .get('https://api.lms.pts.asia/api/teacher/studentlist/' + ID, {
+      .get('https://clz-api.vercel.app/api/teacher/studentlist/' + ID, {
         headers: authHeader(),
       })
       .then(res => res.data),
