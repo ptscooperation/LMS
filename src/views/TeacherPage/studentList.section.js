@@ -50,6 +50,7 @@ export default function StudentListSection(props) {
       <StudnetListComponent
         student_uid={value.student_uid}
         student_payday={value.student_payday}
+        id={ID}
       />
     ))
     /*    function pay(day) {
