@@ -35,8 +35,10 @@ export default function StudnetListComponent(props) {
   const student_uid = props.student_uid
   const student_payday = props.student_payday
   const ID = props.id
+
   const oneDay = 24 * 60 * 60 * 1000
   var present_date = new Date()
+
   function pay(day) {
     if (Math.round(Math.abs((present_date - new Date(day)) / oneDay)) < 30) {
       return 'Paid'
@@ -44,6 +46,7 @@ export default function StudnetListComponent(props) {
       return 'Not Paid'
     }
   }
+
   const handleChangeOne = event => {
     const __data = {
       class_id: ID,
@@ -64,6 +67,7 @@ export default function StudnetListComponent(props) {
         console.log('Error in UpdateFree!')
       })
   }
+
   return (
     <TableContainer component={Paper}>
       <Table aria-label="fee table">
