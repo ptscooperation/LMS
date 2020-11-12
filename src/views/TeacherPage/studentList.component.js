@@ -53,7 +53,7 @@ export default function StudnetListComponent(props) {
       student_uid: student_uid,
     }
     axios
-      .post(`https://clz-api.vercel.app/api/teacher/studentfee`, __data, {
+      .post(`https://api.lms.pts.asia/api/teacher/studentfee`, __data, {
         headers: authHeader(),
       })
       .then(res => {
