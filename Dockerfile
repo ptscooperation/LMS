@@ -1,6 +1,6 @@
 FROM node:alpine as builder
 
-RUN mkdir /usr/src && mkdir /usr/src/app
+RUN mkdir -p /usr/src/app
 COPY . /usr/src/app
 
 # Create app directory
