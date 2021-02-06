@@ -63,7 +63,7 @@ export default function SetFeedSection(props) {
     }
     //console.log('D :: ', data)
     axios
-      .post(`http://127.0.0.1:8082/api/teacher/addpost`, data, {
+      .post(`https://api.lms.pts.asia/api/teacher/addpost`, data, {
         headers: authHeader(),
       })
       .then(res => {
@@ -83,7 +83,7 @@ export default function SetFeedSection(props) {
 
   const { isLoading, error, data } = useQuery('repoData', () =>
     axios
-      .get('http://127.0.0.1:8082/api/teacher/postlist/' + ID, {
+      .get('https://api.lms.pts.asia/api/teacher/postlist/' + ID, {
         headers: authHeader(),
       })
       .then(res => res.data.post_list),
