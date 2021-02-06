@@ -9,9 +9,12 @@ import marked from 'marked'
 import ISimpleMDE from 'react-simplemde-v1'
 import Button from '@material-ui/core/Button'
 import Alert from '@material-ui/lab/Alert'
+import Switch from '@material-ui/core/Switch'
 import 'simplemde/dist/simplemde.min.css'
 // core components
 import PostComponent from './post.component'
+//import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,6 +28,11 @@ export default function SetFeedSection(props) {
   const [textValue, setTextValue] = useState('Hello World!!!')
   const [alert, setAlert] = useState()
   const [alertType, setAlertType] = useState()
+  const [checked, setChecked] = useState(false)
+
+  const toggleChecked = () => {
+    setChecked(prev => !prev)
+  }
 
   const ID = props.location.pathname.split('/classfeed/')[1]
   var PostSectionList
@@ -50,6 +58,7 @@ export default function SetFeedSection(props) {
 
     const data = {
       class_id: ID,
+      kind: checked ? 'html' : 'marked',
       post_data: textValue,
     }
     console.log('D :: ', data)
@@ -112,6 +121,10 @@ export default function SetFeedSection(props) {
       >
         Post
       </Button>
+      <Switch size="medium" checked={checked} onChange={toggleChecked} />
+      <Typography variant="button" display="block" gutterBottom>
+        Video
+      </Typography>
       <Alert severity={`${alertType}`}>{alert}</Alert>
       {PostSectionList}
     </div>
