@@ -48,7 +48,7 @@ export default function FeedSection(props) {
       value.post_list.map(x => (
         <PostComponent
           //id={classID} history={props.history}
-          data={x.post_data}
+          data={x}
         />
       )),
     )

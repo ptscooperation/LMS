@@ -32,7 +32,11 @@ export default function PostComponent(props) {
   //  const History = props.history
 
   const getMarkdownText = () => {
-    var rawMarkup = marked(Data, { sanitize: true })
+    if (Data.kind === 'html') {
+      return { __html: Data.post_data }
+    }
+
+    var rawMarkup = marked(Data.post_data, { sanitize: true })
     return { __html: rawMarkup }
   }
 
