@@ -41,7 +41,7 @@ export default function PostComponent(props) {
   }
 
   return (
-    <Grid item xs={12} lg={4}>
+    <Grid item xs={12} lg={12}>
       <Card className={classes.root}>
         <CardActionArea>
           <CardContent>
