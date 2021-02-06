@@ -61,9 +61,9 @@ export default function SetFeedSection(props) {
       kind: checked ? 'html' : 'marked',
       post_data: textValue,
     }
-    console.log('D :: ', data)
+    //console.log('D :: ', data)
     axios
-      .post(`https://api.lms.pts.asia/api/teacher/addpost`, data, {
+      .post(`http://127.0.0.1:8082/api/teacher/addpost`, data, {
         headers: authHeader(),
       })
       .then(res => {
@@ -83,7 +83,7 @@ export default function SetFeedSection(props) {
 
   const { isLoading, error, data } = useQuery('repoData', () =>
     axios
-      .get('https://api.lms.pts.asia/api/teacher/postlist/' + ID, {
+      .get('http://127.0.0.1:8082/api/teacher/postlist/' + ID, {
         headers: authHeader(),
       })
       .then(res => res.data.post_list),
@@ -122,7 +122,7 @@ export default function SetFeedSection(props) {
         Post
       </Button>
       <Switch size="medium" checked={checked} onChange={toggleChecked} />
-      <Typography variant="button" display="block" gutterBottom>
+      <Typography variant="button" gutterBottom>
         Video
       </Typography>
       <Alert severity={`${alertType}`}>{alert}</Alert>
