@@ -1,4 +1,4 @@
-FROM node:alpine as builder
+FROM node:14.15.4-buster-slim as builder
 
 RUN mkdir -p /usr/src/app
 COPY . /usr/src/app
