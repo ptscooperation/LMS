@@ -34,6 +34,7 @@ export default function StudnetListComponent(props) {
 
   const student_uid = props.student_uid
   const student_payday = props.student_payday
+  const student_name = props.student_name
   const ID = props.id
 
   const oneDay = 24 * 60 * 60 * 1000
@@ -75,6 +76,9 @@ export default function StudnetListComponent(props) {
           <TableRow>
             <TableCell align="left">
               <FormLabel>{student_uid}</FormLabel>
+            </TableCell>
+            <TableCell align="left">
+              <FormLabel>{student_name}</FormLabel>
             </TableCell>
             <TableCell align="left">
               <FormLabel>{student_payday}</FormLabel>

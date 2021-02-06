@@ -38,6 +38,7 @@ export default function StudentListSection(props) {
   } else {
     StudentListTable = Object.values(data.student_list).map(value => (
       <StudnetListComponent
+        student_name={value.student_name}
         student_uid={value.student_uid}
         student_payday={value.student_payday}
         id={ID}

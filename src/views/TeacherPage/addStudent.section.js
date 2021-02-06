@@ -175,6 +175,12 @@ export default function AddStudentSection(props) {
             <TableBody>
               <TableRow>
                 <TableCell align="left">
+                  <FormLabel>{x.student_uid}</FormLabel>
+                </TableCell>
+                <TableCell align="left">
+                  <FormLabel>{x.student_name}</FormLabel>
+                </TableCell>
+                <TableCell align="left">
                   <FormLabel>{x.student_payday}</FormLabel>
                 </TableCell>
                 <TableCell align="left">
