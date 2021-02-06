@@ -215,7 +215,7 @@ export default function PersistentDrawerRight(props) {
             >
               <AssessmentIcon />
             </IconButton>
-          </ListItem>{' '}
+          </ListItem> */}
           <ListItem button>
             <IconButton
               color="inherit"
@@ -228,8 +228,8 @@ export default function PersistentDrawerRight(props) {
             >
               <NoteAddIcon />
             </IconButton>
-          </ListItem>{' '}
-          <ListItem button>
+          </ListItem>
+          {/* <ListItem button>
             <IconButton
               color="inherit"
               aria-label="Profile"
